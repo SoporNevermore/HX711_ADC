@@ -344,7 +344,7 @@ void HX711_ADC::conversion24bit()  //read 24 bit data, store in dataset and star
 		digitalWrite(sckPin, 0);
 		if (i < (24)) 
 		{
-			dout = digitalRead(doutPin);
+			dout = PORTD | B00100000;  bitRead(PIND,3);;
 			data = (data << 1) | dout;
 		} else {
 			if(SCK_DELAY) delayMicroseconds(1); // could be required for faster mcu's, set value in config.h
